@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: ,
+    avatarURL: 'https://p7.hiclipart.com/preview/118/942/565/computer-icons-avatar-child-user-avatar.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +16,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: ,
+    avatarURL: 'https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-boy-user-avatar-vector-icon-free-png-image_1538406.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +26,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: ,
+    avatarURL: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -115,19 +117,21 @@ let questions = {
   },
 }
 
+/* eslint-enable */
+
 function generateUID () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
 
 export function _getUsers () {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({...users}), 1000)
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve({ ...users }), 1000)
   })
 }
 
 export function _getQuestions () {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({...questions}), 1000)
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve({ ...questions }), 1000)
   })
 }
 
@@ -138,26 +142,26 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
     author,
     optionOne: {
       votes: [],
-      text: optionOneText,
+      text: optionOneText
     },
     optionTwo: {
       votes: [],
-      text: optionTwoText,
+      text: optionTwoText
     }
   }
 }
 
 export function _saveQuestion (question) {
-  return new Promise((res, rej) => {
-    const authedUser = question.author;
-    const formattedQuestion = formatQuestion(question);
+  return new Promise((resolve, reject) => {
+    const authedUser = question.author
+    const formattedQuestion = formatQuestion(question)
 
     setTimeout(() => {
       questions = {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
       }
-      
+
       users = {
         ...users,
         [authedUser]: {
@@ -166,13 +170,13 @@ export function _saveQuestion (question) {
         }
       }
 
-      res(formattedQuestion)
+      resolve(formattedQuestion)
     }, 1000)
   })
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
-  return new Promise((res, rej) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       users = {
         ...users,
@@ -196,7 +200,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
         }
       }
 
-      res()
+      resolve()
     }, 500)
   })
 }
