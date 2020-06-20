@@ -4,7 +4,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: 'https://p7.hiclipart.com/preview/118/942/565/computer-icons-avatar-child-user-avatar.jpg',
+    avatarURL: 'https://www.terrainhopperusa.com/wp-content/uploads/2019/01/avatar-woman.png',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
